@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">SSF Companion</string>
+    <string name="title_activity_ssf_companion">SSF Companion App</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Map name to png name for room -->
+    <string name="room_1">living_room</string>
+    <string name="room_2">kitchen</string>
+    <string name="room_3">master_bedroom</string>
+
+    <string-array name="room_names">
+        <item>Living Room</item>
+        <item>Kitchen</item>
+        <item>Master Bedroom</item>
+    </string-array>
+</resources>
