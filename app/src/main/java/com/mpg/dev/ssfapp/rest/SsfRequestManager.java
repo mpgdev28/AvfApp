@@ -6,6 +6,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mpg.dev.ssfapp.data.RoomInfo;
 
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,40 +28,68 @@ public class SsfRequestManager {
         ssfRestService = retrofit.create(SsfRestService.class);
     }
 
-    public void getRooms() {
-        String req = "{\"Request\":\"GetRooms\"}";
+    public Flowable<SsfHomeResponse> getRooms(String req) {
+        req = "{\"Request\":\"GetRooms\"}";
         Call<String> rooms = ssfRestService.getRooms(req);
 
-        rooms.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+        return Flowable.create(emitter -> {
+            Callback<String> restCallback = new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    Gson gson = new GsonBuilder().setLenient().create();
+                    String body = response.body();
 
-                Gson gson = new GsonBuilder().setLenient().create();
-                String body = response.body();
+                    SsfHomeResponse homeResponse = gson.fromJson(body, SsfHomeResponse.class);
 
-                SsfHomeResponse homeResponse = gson.fromJson(body, SsfHomeResponse.class);
+                    Log.d("SSF_APP", body);
+                    emitter.onNext(homeResponse);
+                }
 
-                Log.d("SSF_APP", body);
-            }
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Log.d("SSF_APP", "FAILED BIG TIME");
+                    emitter.onError(t);
+                }
+            };
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.d("SSF_APP", "FAILED BIG TIME");
-            }
-        });
+            rooms.enqueue(restCallback);
 
-        /*rooms.enqueue(new Callback<SsfHomeResponse>() {
-            @Override
-            public void onResponse(Call<SsfHomeResponse> call, Response<SsfHomeResponse> response) {
-                SsfHomeResponse body = response.body();
+        }, BackpressureStrategy.BUFFER);
+    }
 
-                Log.d("SSF_APP", body.getResponse());
-            }
+    public Flowable<SsfHomeResponse> getDevices(String req){
+        Call<String> devices = ssfRestService.getDevices(req);
+        return Flowable.create(emitter -> {
+            Callback<String> restCallback = new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
 
-            @Override
-            public void onFailure(Call<SsfHomeResponse> call, Throwable t) {
-                Log.d("SSF_APP", "FAILED BIG TIME");
-            }
-        });*/
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+
+                }
+            };
+        }, BackpressureStrategy.BUFFER);
+    }
+
+    public Flowable<SsfHomeResponse> executeCommand(String req){
+        Call<String> execCall = ssfRestService.executeCommand(req);
+
+        return Flowable.create(emitter -> {
+            Callback<String> restCallback = new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+
+                }
+            };
+        }, BackpressureStrategy.BUFFER);
+
     }
 }
