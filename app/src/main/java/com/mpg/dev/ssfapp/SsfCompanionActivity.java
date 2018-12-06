@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.mpg.dev.avfapp.R;
+import com.mpg.dev.ssfapp.rest.SsfRequestManager;
 import com.mpg.dev.ssfapp.view.RoomListAdapter;
 
 import java.util.ArrayList;
@@ -33,6 +34,8 @@ public class SsfCompanionActivity extends AppCompatActivity
     RecyclerView mRoomListRecView;
     private List<String> mRoomList;
     private RoomListAdapter mRoomListAdapter;
+
+    private SsfRequestManager ssfRequestManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,8 @@ public class SsfCompanionActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        ssfRequestManager = new SsfRequestManager();
+
         //get rooms
         getRooms();
         mRoomListAdapter = new RoomListAdapter(this, mRoomList);
@@ -64,6 +69,9 @@ public class SsfCompanionActivity extends AppCompatActivity
      * TODO - call SSF Rest service to get available rooms
      */
     private void getRooms(){
+
+        ssfRequestManager.getRooms();
+
         String[] roomNames = getResources().getStringArray(R.array.room_names);
         mRoomList = new ArrayList<>(Arrays.asList(roomNames));
     }
