@@ -12,6 +12,7 @@
     <string name="room_1">living_room</string>
     <string name="room_2">kitchen</string>
     <string name="room_3">master_bedroom</string>
+    <string name="default_room_name">Room Name</string>
 
     <string-array name="room_names">
         <item>Living Room</item>

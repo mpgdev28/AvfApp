@@ -8,15 +8,19 @@ import android.hardware.display.DisplayManager;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mpg.dev.avfapp.R;
+import com.mpg.dev.ssfapp.data.RoomInfo;
 
 import java.util.List;
 
@@ -25,11 +29,11 @@ import butterknife.ButterKnife;
 
 public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.RoomViewHolder> {
 
-    private List<String> mRoomNames;
+    private List<RoomInfo> mRoomInfoList;
     private Context mContext;
 
-    public RoomListAdapter(Context context, List<String> roomNames){
-        mRoomNames = roomNames;
+    public RoomListAdapter(Context context, List<RoomInfo> roomNames){
+        mRoomInfoList = roomNames;
         mContext = context;
     }
 
@@ -43,12 +47,12 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.RoomVi
     @Override
     public void onBindViewHolder(@NonNull RoomViewHolder holder, int position) {
         holder.getBackgroundForIndex(position);
-        holder.setRoomName(mRoomNames.get(position));
+        holder.setRoomName(mRoomInfoList.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return mRoomNames.size();
+        return mRoomInfoList.size();
     }
 
     public class RoomViewHolder extends RecyclerView.ViewHolder
@@ -57,6 +61,8 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.RoomVi
         TextView mRoomNameLabel;
         @BindView(R.id.room_card_bg)
         ImageView mRoomBackgroundImage;
+        @BindView(R.id.room_card_toolbar)
+        LinearLayout mRoomToolbar;
 
         private Context mContext;
 
@@ -64,6 +70,12 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.RoomVi
             super(itemView);
             mContext = context;
             ButterKnife.bind(this, itemView);
+
+            ImageButton sourceButton = new ImageButton(mContext);
+            sourceButton.setImageResource(R.drawable.ic_menu_source);
+            //sourceButton.setLayoutParams(n);
+            mRoomToolbar.addView(sourceButton);
+
         }
 
         public void getBackgroundForIndex(int index){

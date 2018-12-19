@@ -29,6 +29,7 @@ dependencies {
     def room_ver = "1.1.1"
     def butterknife_ver = "8.8.1"
     def retrofit_ver = "2.4.0"
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:$android_support_ver"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'

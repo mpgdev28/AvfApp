@@ -18,7 +18,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class SsfRequestManager {
 
     private SsfRestService ssfRestService;
-
+    private Gson gson;
     public SsfRequestManager() {
 
         Retrofit retrofit =
@@ -26,17 +26,19 @@ public class SsfRequestManager {
                         .addConverterFactory(ScalarsConverterFactory.create()).build();
 
         ssfRestService = retrofit.create(SsfRestService.class);
+
+         gson = new GsonBuilder().setLenient().create();
     }
 
     public Flowable<SsfHomeResponse> getRooms(String req) {
-        req = "{\"Request\":\"GetRooms\"}";
+
         Call<String> rooms = ssfRestService.getRooms(req);
 
         return Flowable.create(emitter -> {
             Callback<String> restCallback = new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
-                    Gson gson = new GsonBuilder().setLenient().create();
+
                     String body = response.body();
 
                     SsfHomeResponse homeResponse = gson.fromJson(body, SsfHomeResponse.class);
@@ -58,19 +60,26 @@ public class SsfRequestManager {
     }
 
     public Flowable<SsfHomeResponse> getDevices(String req){
+
         Call<String> devices = ssfRestService.getDevices(req);
         return Flowable.create(emitter -> {
             Callback<String> restCallback = new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
 
+                    SsfHomeResponse homeResponse = gson.fromJson(response.body(), SsfHomeResponse.class);
+                    Log.d("SSF_APP", response.body());
+                    emitter.onNext(homeResponse);
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-
+                    emitter.onError(t);
                 }
             };
+
+            devices.enqueue(restCallback);
+
         }, BackpressureStrategy.BUFFER);
     }
 

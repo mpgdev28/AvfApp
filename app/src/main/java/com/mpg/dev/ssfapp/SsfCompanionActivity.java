@@ -1,34 +1,43 @@
 package com.mpg.dev.ssfapp;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mpg.dev.avfapp.R;
+import com.mpg.dev.ssfapp.data.RoomInfo;
+import com.mpg.dev.ssfapp.rest.SsfHomeRequest;
+import com.mpg.dev.ssfapp.rest.SsfHomeResponse;
 import com.mpg.dev.ssfapp.rest.SsfRequestManager;
 import com.mpg.dev.ssfapp.view.RoomListAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class SsfCompanionActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final String LOG_TAG = SsfCompanionActivity.class.getName();
 
     @BindView(R.id.room_list)
     RecyclerView mRoomListRecView;
@@ -39,16 +48,19 @@ public class SsfCompanionActivity extends AppCompatActivity
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
-    private List<String> mRoomList;
+    private List<RoomInfo> mRoomList;
     private RoomListAdapter mRoomListAdapter;
-
     private SsfRequestManager ssfRequestManager;
+    private CompositeDisposable disposableList;
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ssf_companion);
         ButterKnife.bind(this);
+
+        gson = new GsonBuilder().setLenient().create();
 
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -57,30 +69,51 @@ public class SsfCompanionActivity extends AppCompatActivity
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-
         ssfRequestManager = new SsfRequestManager();
+        disposableList = new CompositeDisposable();
 
         //get rooms
         getRooms();
-        mRoomListAdapter = new RoomListAdapter(this, mRoomList);
-        mRoomListRecView.setLayoutManager(new LinearLayoutManager(this));
-        mRoomListRecView.setAdapter(mRoomListAdapter);
     }
 
     /**
      * TODO - call SSF Rest service to get available rooms
      */
-    private void getRooms(){
+    private void getRooms() {
 
-        ssfRequestManager.getRooms();
+        SsfHomeRequest homeRequest = new SsfHomeRequest();
+        homeRequest.request = "GetRooms";
 
-        String[] roomNames = getResources().getStringArray(R.array.room_names);
-        mRoomList = new ArrayList<>(Arrays.asList(roomNames));
+        Flowable<SsfHomeResponse> flowable = ssfRequestManager.getRooms(gson.toJson(homeRequest, SsfHomeRequest.class));
+        disposableList.add(flowable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(ssfHomeResponse -> {
+
+            mRoomList = ssfHomeResponse.getResults().getRooms();
+
+            mRoomListAdapter = new RoomListAdapter(this, mRoomList);
+            mRoomListRecView.setLayoutManager(new LinearLayoutManager(this));
+            mRoomListRecView.setAdapter(mRoomListAdapter);
+
+            for (RoomInfo roomInfo : mRoomList){
+                getDevices(roomInfo.getId());
+            }
+            Log.d(LOG_TAG, "Getting SSF Rooms");
+        }));
+    }
+
+    private void getDevices(String roomId){
+
+        SsfHomeRequest homeRequest = new SsfHomeRequest();
+        homeRequest.request = "GetDevices";
+        homeRequest.roomId = roomId;
+
+        Flowable<SsfHomeResponse> flowable2 = ssfRequestManager.getDevices(gson.toJson(homeRequest, SsfHomeRequest.class));
+        disposableList.add(flowable2.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(ssfHomeResponse -> {
+            Log.d(LOG_TAG, "GetDevices : add to device map");
+        }));
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -116,19 +149,11 @@ public class SsfCompanionActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
+        /*if (id == R.id.nav_camera) {
 
         } else if (id == R.id.nav_send) {
 
-        }
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
