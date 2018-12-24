@@ -2,139 +2,129 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cable_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/imageButton18"
+        android:id="@+id/cable_sel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Sel"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton2"
-        app:layout_constraintStart_toStartOf="@+id/imageButton2"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintEnd_toEndOf="@+id/cable_down_button"
+        app:layout_constraintStart_toStartOf="@+id/cable_down_button"
+        app:layout_constraintTop_toBottomOf="@+id/cable_down_button"
         app:srcCompat="@drawable/down_arrow" />
 
     <Button
-        android:id="@+id/imageButton24"
+        android:id="@+id/cable_zero_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="0"
-        app:layout_constraintStart_toStartOf="@+id/imageButton12"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/cable_eight_button"
+        app:layout_constraintTop_toBottomOf="@+id/cable_eight_button"
         app:srcCompat="@drawable/default_img" />
 
     <Button
-        android:id="@+id/imageButton25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="36dp"
-        android:background="@android:color/holo_blue_light"
-        android:text="Enter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageButton13"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton13"
-        app:srcCompat="@drawable/default_img" />
-
-    <Button
-        android:id="@+id/imageButton14"
+        android:id="@+id/cable_fav_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/holo_blue_light"
         android:text="Fav"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton15"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton15"
+        app:layout_constraintBottom_toBottomOf="@+id/cable_exit_button"
+        app:layout_constraintEnd_toStartOf="@+id/cable_exit_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton27" />
+        app:layout_constraintTop_toBottomOf="@+id/cable_ch_down" />
 
     <Button
-        android:id="@+id/imageButton15"
+        android:id="@+id/cable_exit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/holo_blue_light"
         android:text="Exit"
-        app:layout_constraintStart_toEndOf="@+id/imageButton14"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton27" />
+        app:layout_constraintStart_toEndOf="@+id/cable_fav_button"
+        app:layout_constraintTop_toBottomOf="@+id/cable_ch_down" />
 
     <Button
-        android:id="@+id/imageButton6"
+        android:id="@+id/cable_five_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="5"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton12"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton11"
+        app:layout_constraintBottom_toTopOf="@+id/cable_eight_button"
+        app:layout_constraintEnd_toStartOf="@+id/cable_six_button"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton9"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5"
+        app:layout_constraintStart_toEndOf="@+id/cable_four_button"
+        app:layout_constraintTop_toBottomOf="@+id/cable_two_button"
         app:srcCompat="@drawable/default_img" />
 
     <Button
-        android:id="@+id/imageButton9"
+        android:id="@+id/cable_four_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="4"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton10"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton6"
+        app:layout_constraintBottom_toTopOf="@+id/cable_seven_button"
+        app:layout_constraintEnd_toStartOf="@+id/cable_five_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton4"
+        app:layout_constraintTop_toBottomOf="@+id/cable_one_button"
         app:srcCompat="@drawable/default_img" />
 
     <Button
-        android:id="@+id/imageButton10"
+        android:id="@+id/cable_seven_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="7"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton12"
+        app:layout_constraintEnd_toStartOf="@+id/cable_eight_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton9"
+        app:layout_constraintTop_toBottomOf="@+id/cable_four_button"
         app:srcCompat="@drawable/default_img" />
 
     <Button
-        android:id="@+id/imageButton11"
+        android:id="@+id/cable_six_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="6"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton13"
+        app:layout_constraintBottom_toTopOf="@+id/cable_nine_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton6"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton8"
+        app:layout_constraintStart_toEndOf="@+id/cable_five_button"
+        app:layout_constraintTop_toBottomOf="@+id/cable_three_button"
         app:srcCompat="@drawable/default_img" />
 
     <Button
-        android:id="@+id/imageButton12"
+        android:id="@+id/cable_eight_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="8"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton13"
+        app:layout_constraintEnd_toStartOf="@+id/cable_nine_button"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton10"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton6"
+        app:layout_constraintStart_toEndOf="@+id/cable_seven_button"
+        app:layout_constraintTop_toBottomOf="@+id/cable_five_button"
         app:srcCompat="@drawable/default_img" />
 
     <Button
-        android:id="@+id/imageButton13"
+        android:id="@+id/cable_nine_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -142,120 +132,120 @@
         android:text="9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton12"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton11"
+        app:layout_constraintStart_toEndOf="@+id/cable_eight_button"
+        app:layout_constraintTop_toBottomOf="@+id/cable_six_button"
         app:srcCompat="@drawable/default_img" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/cable_up_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton22"
+        app:layout_constraintEnd_toStartOf="@+id/cable_right_button"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/up_arrow" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/cable_down_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        app:layout_constraintStart_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:layout_constraintStart_toStartOf="@+id/cable_up_button"
+        app:layout_constraintTop_toBottomOf="@+id/cable_up_button"
         app:srcCompat="@drawable/down_arrow" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/cable_power_button"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@android:drawable/presence_online"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/power_icon" />
 
     <Button
-        android:id="@+id/imageButton4"
+        android:id="@+id/cable_one_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="1"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton9"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton5"
+        app:layout_constraintBottom_toTopOf="@+id/cable_four_button"
+        app:layout_constraintEnd_toStartOf="@+id/cable_two_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton14" />
+        app:layout_constraintTop_toBottomOf="@+id/cable_fav_button" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/cable_left_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toBottomOf="@+id/cable_down_button"
+        app:layout_constraintEnd_toStartOf="@+id/cable_up_button"
+        app:layout_constraintTop_toTopOf="@+id/cable_up_button"
         app:srcCompat="@drawable/left_arrow" />
 
     <ImageButton
-        android:id="@+id/imageButton22"
+        android:id="@+id/cable_right_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+        app:layout_constraintBottom_toBottomOf="@+id/cable_down_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="@+id/cable_up_button"
         app:srcCompat="@drawable/right_arrow" />
 
     <Button
-        android:id="@+id/imageButton8"
+        android:id="@+id/cable_three_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="3"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton11"
+        app:layout_constraintBottom_toTopOf="@+id/cable_six_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton5"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton14"
+        app:layout_constraintStart_toEndOf="@+id/cable_two_button"
+        app:layout_constraintTop_toBottomOf="@+id/cable_fav_button"
         app:srcCompat="@drawable/default_img" />
 
     <Button
-        android:id="@+id/imageButton5"
+        android:id="@+id/cable_two_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="2"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton6"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton8"
+        app:layout_constraintBottom_toTopOf="@+id/cable_five_button"
+        app:layout_constraintEnd_toStartOf="@+id/cable_three_button"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton4"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton14"
+        app:layout_constraintStart_toEndOf="@+id/cable_one_button"
+        app:layout_constraintTop_toBottomOf="@+id/cable_fav_button"
         app:srcCompat="@drawable/default_img" />
 
     <Button
-        android:id="@+id/imageButton26"
+        android:id="@+id/cable_ch_up"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@+id/imageButton3"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-        android:text="Ch+" />
+        android:layout_marginTop="8dp"
+        android:text="Ch+"
+        app:layout_constraintTop_toBottomOf="@+id/cable_power_button"
+        tools:layout_editor_absoluteX="32dp" />
 
     <Button
-        android:id="@+id/imageButton27"
+        android:id="@+id/cable_ch_down"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/imageButton26"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton26"
-        android:text="Ch-" />
+        android:layout_marginTop="8dp"
+        android:text="Ch-"
+        app:layout_constraintStart_toStartOf="@+id/cable_ch_up"
+        app:layout_constraintTop_toBottomOf="@+id/cable_ch_up" />
 </android.support.constraint.ConstraintLayout>

@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mpg.dev.ssfapp.data.RoomInfo;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
@@ -12,14 +11,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class SsfRequestManager {
-
+    private final String LOG_TAG = SsfRequestManager.class.getName();
     private SsfRestService ssfRestService;
     private Gson gson;
-    public SsfRequestManager() {
+    private static SsfRequestManager theInstance = new SsfRequestManager();
+    private SsfRequestManager() {
 
         Retrofit retrofit =
                 new Retrofit.Builder().baseUrl("http://192.168.1.131")
@@ -28,6 +27,10 @@ public class SsfRequestManager {
         ssfRestService = retrofit.create(SsfRestService.class);
 
          gson = new GsonBuilder().setLenient().create();
+    }
+
+    public static SsfRequestManager instance(){
+        return theInstance;
     }
 
     public Flowable<SsfHomeResponse> getRooms(String req) {
@@ -43,13 +46,13 @@ public class SsfRequestManager {
 
                     SsfHomeResponse homeResponse = gson.fromJson(body, SsfHomeResponse.class);
 
-                    Log.d("SSF_APP", body);
+                    Log.d(LOG_TAG, body);
                     emitter.onNext(homeResponse);
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-                    Log.d("SSF_APP", "FAILED BIG TIME");
+                    Log.d(LOG_TAG, "FAILED BIG TIME");
                     emitter.onError(t);
                 }
             };
@@ -68,7 +71,7 @@ public class SsfRequestManager {
                 public void onResponse(Call<String> call, Response<String> response) {
 
                     SsfHomeResponse homeResponse = gson.fromJson(response.body(), SsfHomeResponse.class);
-                    Log.d("SSF_APP", response.body());
+                    Log.d(LOG_TAG, response.body());
                     emitter.onNext(homeResponse);
                 }
 
@@ -84,21 +87,28 @@ public class SsfRequestManager {
     }
 
     public Flowable<SsfHomeResponse> executeCommand(String req){
+
+        Log.d(LOG_TAG, "Executing command = " + req);
+
         Call<String> execCall = ssfRestService.executeCommand(req);
 
         return Flowable.create(emitter -> {
             Callback<String> restCallback = new Callback<String>() {
+
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
-
+                    SsfHomeResponse homeResponse = gson.fromJson(response.body(), SsfHomeResponse.class);
+                    Log.d(LOG_TAG, response.body());
+                    emitter.onNext(homeResponse);
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-
+                    emitter.onError(t);
                 }
             };
-        }, BackpressureStrategy.BUFFER);
 
+            execCall.enqueue(restCallback);
+        }, BackpressureStrategy.BUFFER);
     }
 }

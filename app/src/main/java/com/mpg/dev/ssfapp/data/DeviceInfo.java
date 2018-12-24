@@ -47,13 +47,13 @@ public class DeviceInfo {
         this.commands = commands;
     }
 
-    enum DeviceType{
+    public enum DeviceType{
         Switch,
         AvDisplay,
         CableBox
     }
 
-    class Command {
+    public class Command {
         @SerializedName("Name")
         private String name;
         @SerializedName("Command")

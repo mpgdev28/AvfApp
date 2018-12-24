@@ -13,12 +13,25 @@ public class SsfHomeRequest {
     public String deviceType;
 
     @SerializedName("Params")
-    public Param params;
+    public Params params;
 
-    class Param {
-
-
+    public class Params {
+        @SerializedName("Ir")
+        public String irCommand;
+        @SerializedName("Route")
+        public String routeCommand;
     }
 
+    public static SsfHomeRequest createInstance(String req, String roomId, String type, String irCommand, String routeCommand){
+        SsfHomeRequest request = new SsfHomeRequest();
+        request.request = req;
+        request.roomId = roomId;
+        request.deviceType = type;
+        Params params = request.new Params();
+        params.irCommand = irCommand;
+        params.routeCommand = routeCommand;
+        request.params = params;
 
+        return request;
+    }
 }

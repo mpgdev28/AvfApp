@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mpg.dev.avfapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,11 +14,30 @@
         <activity
             android:name="com.mpg.dev.ssfapp.SsfCompanionActivity"
             android:label="@string/title_activity_ssf_companion"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mpg.dev.ssfapp.CableBoxActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.mpg.dev.ssfapp.SsfCompanionActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mpg.dev.ssfapp.SsfCompanionActivity"/>
+        </activity>
+        <activity
+            android:name="com.mpg.dev.ssfapp.AvDisplayActivity"
+            android:parentActivityName="com.mpg.dev.ssfapp.SsfCompanionActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mpg.dev.ssfapp.SsfCompanionActivity" />
         </activity>
     </application>
 

@@ -1,140 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/avdisplay_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/imageButton16"
+        android:id="@+id/avdisplay_sel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Sel"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton2"
-        app:layout_constraintStart_toStartOf="@+id/imageButton2"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintEnd_toEndOf="@+id/avdisplay_down_button"
+        app:layout_constraintStart_toStartOf="@+id/avdisplay_down_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_down_button"
         app:srcCompat="@drawable/down_arrow" />
 
     <Button
-        android:id="@+id/imageButton24"
+        android:id="@+id/aavdisplay_zero_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="0"
-        app:layout_constraintStart_toStartOf="@+id/imageButton12"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton12"
-        app:srcCompat="@drawable/default_img" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/avdisplay_eight_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_eight_button" />
 
     <Button
-        android:id="@+id/imageButton25"
+        android:id="@+id/avdisplay_enter_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/holo_blue_bright"
         android:text="Enter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageButton13"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton13"
-        app:srcCompat="@drawable/default_img" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/avdisplay_nine_button"
+        app:layout_constraintStart_toStartOf="@+id/avdisplay_nine_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_nine_button" />
 
     <Button
-        android:id="@+id/imageButton14"
+        android:id="@+id/avdisplay_vid_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/holo_blue_light"
         android:text="Video"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton15"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton15"
+        app:layout_constraintBottom_toBottomOf="@+id/avdisplay_menu_button"
+        app:layout_constraintEnd_toStartOf="@+id/avdisplay_menu_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton27" />
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_vol_down" />
 
     <Button
-        android:id="@+id/imageButton15"
+        android:id="@+id/avdisplay_menu_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/holo_blue_light"
         android:text="Menu"
-        app:layout_constraintStart_toEndOf="@+id/imageButton14"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton27" />
+        app:layout_constraintStart_toEndOf="@+id/avdisplay_vid_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_vol_down" />
 
     <Button
-        android:id="@+id/imageButton6"
+        android:id="@+id/avdisplay_five_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="5"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton12"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton11"
+        app:layout_constraintBottom_toTopOf="@+id/avdisplay_eight_button"
+        app:layout_constraintEnd_toStartOf="@+id/avdisplay_six_button"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton9"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5"
-        app:srcCompat="@drawable/default_img" />
+        app:layout_constraintStart_toEndOf="@+id/avdisplay_four_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_two_button" />
 
     <Button
-        android:id="@+id/imageButton9"
+        android:id="@+id/avdisplay_four_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="4"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton10"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton6"
+        app:layout_constraintBottom_toTopOf="@+id/avdisplay_seven_button"
+        app:layout_constraintEnd_toStartOf="@+id/avdisplay_five_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton4"
-        app:srcCompat="@drawable/default_img" />
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_one_button" />
 
     <Button
-        android:id="@+id/imageButton10"
+        android:id="@+id/avdisplay_seven_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="7"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton12"
+        app:layout_constraintEnd_toStartOf="@+id/avdisplay_eight_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton9"
-        app:srcCompat="@drawable/default_img" />
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_four_button" />
 
     <Button
-        android:id="@+id/imageButton11"
+        android:id="@+id/avdisplay_six_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="6"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton13"
+        app:layout_constraintBottom_toTopOf="@+id/avdisplay_nine_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton6"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton8"
-        app:srcCompat="@drawable/default_img" />
+        app:layout_constraintStart_toEndOf="@+id/avdisplay_five_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_three_button" />
 
     <Button
-        android:id="@+id/imageButton12"
+        android:id="@+id/avdisplay_eight_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="8"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton13"
+        app:layout_constraintEnd_toStartOf="@+id/avdisplay_nine_button"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton10"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton6"
-        app:srcCompat="@drawable/default_img" />
+        app:layout_constraintStart_toEndOf="@+id/avdisplay_seven_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_five_button" />
 
     <Button
-        android:id="@+id/imageButton13"
+        android:id="@+id/avdisplay_nine_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -142,120 +138,133 @@
         android:text="9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton12"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton11"
-        app:srcCompat="@drawable/default_img" />
+        app:layout_constraintStart_toEndOf="@+id/avdisplay_eight_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_six_button" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/avdisplay_up_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton22"
+        app:layout_constraintEnd_toStartOf="@+id/avdisplay_right_button"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/up_arrow" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/avdisplay_down_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        app:layout_constraintStart_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/avdisplay_right_button"
+        app:layout_constraintStart_toEndOf="@+id/avdisplay_left_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_up_button"
         app:srcCompat="@drawable/down_arrow" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/avdisplay_poweron_button"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@android:drawable/presence_online"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/power_icon" />
 
+    <ImageButton
+        android:id="@+id/avdisplay_poweroff_button"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:drawable/presence_online"
+        android:visibility="invisible"
+        android:backgroundTint="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/power_icon" />
+
     <Button
-        android:id="@+id/imageButton4"
+        android:id="@+id/avdisplay_one_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="1"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton9"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton5"
+        app:layout_constraintBottom_toTopOf="@+id/avdisplay_four_button"
+        app:layout_constraintEnd_toStartOf="@+id/avdisplay_two_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton14" />
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_vid_button" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/avdisplay_left_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toTopOf="@+id/avdisplay_down_button"
+        app:layout_constraintEnd_toStartOf="@+id/avdisplay_up_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_up_button"
         app:srcCompat="@drawable/left_arrow" />
 
     <ImageButton
-        android:id="@+id/imageButton22"
+        android:id="@+id/avdisplay_right_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+        app:layout_constraintBottom_toTopOf="@+id/avdisplay_down_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_up_button"
         app:srcCompat="@drawable/right_arrow" />
 
     <Button
-        android:id="@+id/imageButton8"
+        android:id="@+id/avdisplay_three_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="3"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton11"
+        app:layout_constraintBottom_toTopOf="@+id/avdisplay_six_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton5"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton14"
-        app:srcCompat="@drawable/default_img" />
+        app:layout_constraintStart_toEndOf="@+id/avdisplay_two_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_vid_button" />
 
     <Button
-        android:id="@+id/imageButton5"
+        android:id="@+id/avdisplay_two_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:text="2"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton6"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton8"
+        app:layout_constraintBottom_toTopOf="@+id/avdisplay_five_button"
+        app:layout_constraintEnd_toStartOf="@+id/avdisplay_three_button"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton4"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton14"
-        app:srcCompat="@drawable/default_img" />
+        app:layout_constraintStart_toEndOf="@+id/avdisplay_one_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_vid_button" />
 
     <ImageButton
-        android:id="@+id/imageButton26"
+        android:id="@+id/avdisplay_vol_up"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@+id/imageButton3"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/avdisplay_poweron_button"
+        app:layout_constraintTop_toBottomOf="@+id/avdisplay_poweron_button"
         app:srcCompat="@drawable/vol_up" />
 
     <ImageButton
-        android:id="@+id/imageButton27"
+        android:id="@+id/avdisplay_vol_down"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/imageButton26"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton26"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/avdisplay_vol_up"
+        app:layout_constraintTop_toBottomOf="@id/avdisplay_vol_up"
         app:srcCompat="@drawable/vol_down" />
 </android.support.constraint.ConstraintLayout>

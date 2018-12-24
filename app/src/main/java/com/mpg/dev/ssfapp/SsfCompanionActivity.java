@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mpg.dev.avfapp.R;
+import com.mpg.dev.ssfapp.data.DataManager;
+import com.mpg.dev.ssfapp.data.DeviceInfo;
 import com.mpg.dev.ssfapp.data.RoomInfo;
 import com.mpg.dev.ssfapp.rest.SsfHomeRequest;
 import com.mpg.dev.ssfapp.rest.SsfHomeResponse;
@@ -50,9 +52,9 @@ public class SsfCompanionActivity extends AppCompatActivity
 
     private List<RoomInfo> mRoomList;
     private RoomListAdapter mRoomListAdapter;
-    private SsfRequestManager ssfRequestManager;
     private CompositeDisposable disposableList;
     private Gson gson;
+    private DataManager mDataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +71,9 @@ public class SsfCompanionActivity extends AppCompatActivity
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-        ssfRequestManager = new SsfRequestManager();
         disposableList = new CompositeDisposable();
+
+        //check preferences and db for data
 
         //get rooms
         getRooms();
@@ -84,7 +87,7 @@ public class SsfCompanionActivity extends AppCompatActivity
         SsfHomeRequest homeRequest = new SsfHomeRequest();
         homeRequest.request = "GetRooms";
 
-        Flowable<SsfHomeResponse> flowable = ssfRequestManager.getRooms(gson.toJson(homeRequest, SsfHomeRequest.class));
+        Flowable<SsfHomeResponse> flowable = SsfRequestManager.instance().getRooms(gson.toJson(homeRequest, SsfHomeRequest.class));
         disposableList.add(flowable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(ssfHomeResponse -> {
 
             mRoomList = ssfHomeResponse.getResults().getRooms();
@@ -106,9 +109,14 @@ public class SsfCompanionActivity extends AppCompatActivity
         homeRequest.request = "GetDevices";
         homeRequest.roomId = roomId;
 
-        Flowable<SsfHomeResponse> flowable2 = ssfRequestManager.getDevices(gson.toJson(homeRequest, SsfHomeRequest.class));
+        Flowable<SsfHomeResponse> flowable2 = SsfRequestManager.instance().getDevices(gson.toJson(homeRequest, SsfHomeRequest.class));
         disposableList.add(flowable2.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(ssfHomeResponse -> {
             Log.d(LOG_TAG, "GetDevices : add to device map");
+
+            List<DeviceInfo> devices = ssfHomeResponse.getResults().getDevices();
+            if(devices != null) {
+                DataManager.instance(this).setDevicesForRoom(roomId, devices);
+            }
         }));
     }
 

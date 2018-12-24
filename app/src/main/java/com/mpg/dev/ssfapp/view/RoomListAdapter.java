@@ -1,10 +1,12 @@
 package com.mpg.dev.ssfapp.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.hardware.display.DisplayManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +22,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mpg.dev.avfapp.R;
+import com.mpg.dev.ssfapp.AvDisplayActivity;
+import com.mpg.dev.ssfapp.CableBoxActivity;
+import com.mpg.dev.ssfapp.SsfCompanionActivity;
 import com.mpg.dev.ssfapp.data.RoomInfo;
 
 import java.util.List;
@@ -47,7 +52,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.RoomVi
     @Override
     public void onBindViewHolder(@NonNull RoomViewHolder holder, int position) {
         holder.getBackgroundForIndex(position);
-        holder.setRoomName(mRoomInfoList.get(position).getName());
+        holder.setRoomName(mRoomInfoList.get(position).getName(), mRoomInfoList.get(position).getId());
     }
 
     @Override
@@ -63,19 +68,33 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.RoomVi
         ImageView mRoomBackgroundImage;
         @BindView(R.id.room_card_toolbar)
         LinearLayout mRoomToolbar;
+        @BindView(R.id.room_card_tv)
+        ImageButton mRoomCardTv;
+        @BindView(R.id.room_card_cable_box)
+        ImageButton mRoomCardCable;
 
         private Context mContext;
+        private String mRoomId;
 
         public RoomViewHolder(View itemView, Context context) {
             super(itemView);
             mContext = context;
             ButterKnife.bind(this, itemView);
+            setupButtonActions();
+        }
 
-            ImageButton sourceButton = new ImageButton(mContext);
-            sourceButton.setImageResource(R.drawable.ic_menu_source);
-            //sourceButton.setLayoutParams(n);
-            mRoomToolbar.addView(sourceButton);
+        private void setupButtonActions() {
+            mRoomCardTv.setOnClickListener(view -> {
+                Intent intent = new Intent(mContext, AvDisplayActivity.class);
+                intent.putExtra("RoomId", mRoomId);
+                mContext.startActivity(intent);
+            });
 
+            mRoomCardCable.setOnClickListener(view -> {
+                Intent intent = new Intent(mContext, CableBoxActivity.class);
+                intent.putExtra("RoomId", mRoomId);
+                mContext.startActivity(intent);
+            });
         }
 
         public void getBackgroundForIndex(int index){
@@ -96,8 +115,9 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.RoomVi
             mRoomBackgroundImage.setImageBitmap(bitmap);
         }
 
-        public void setRoomName(String roomName){
+        public void setRoomName(String roomName, String roomId){
             mRoomNameLabel.setText(roomName);
+            mRoomId = roomId;
         }
 
     }

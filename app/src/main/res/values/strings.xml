@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">SSF Companion</string>
-    <string name="title_activity_ssf_companion">SSF Companion App</string>
+    <string name="app_name">SSF</string>
+    <string name="title_activity_ssf_companion">SSF</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -18,5 +18,61 @@
         <item>Living Room</item>
         <item>Kitchen</item>
         <item>Master Bedroom</item>
+    </string-array>
+
+    <string-array name="switcher_key_commands">
+        <item>LEFT_ARROW</item>
+        <item>RIGHT_ARROW</item>
+        <item>HDMI_INPUT_1</item>
+        <item>HDMI_INPUT_2</item>
+        <item>HDMI_INPUT_3</item>
+    </string-array>
+
+    <string-array name="CableBox_commands">
+        <item>cable_one_button:1</item>
+        <item>cable_two_button:2</item>
+        <item>cable_three_button:3</item>
+        <item>cable_four_button:4</item>
+        <item>cable_five_button:5</item>
+        <item>cable_six_button:6</item>
+        <item>cable_seven_button:7</item>
+        <item>cable_eight_button:8</item>
+        <item>cable_nine_button:9</item>
+        <item>cable_zero_button:0</item>
+        <item>cable_power_button:POWER</item>
+        <item>cable_ch_up:CH+</item>
+        <item>cable_ch_down:CH-</item>
+        <item>cable_up_button:UP_ARROW</item>
+        <item>cable_left_button:LEFT_ARROW</item>
+        <item>cable_right_button:RIGHT_ARROW</item>
+        <item>cable_down_button:DN_ARROW</item>
+        <item>cable_sel_button:SELECT</item>
+        <item>cable_fav_button:FAV</item>
+        <item>cable_exit_button:EXIT</item>
+    </string-array>
+
+    <string-array name="AvDisplay_commands">
+        <item>avdisplay_poweron_button:POWER_ON</item>
+        <item>avdisplay_poweroff_button:POWER_OFF</item>
+        <item>avdisplay_vid_button:VIDEO</item>
+        <item>avdisplay_up_button:UP_ARROW</item>
+        <item>avdisplay_down_button:DN_ARROW</item>
+        <item>avdisplay_left_button:LEFT_ARROW</item>
+        <item>avdisplay_right_button:RIGHT_ARROW</item>
+        <item>avdisplay_enter_button:ENTER</item>
+        <item>avdisplay_menu_button:MENU</item>
+        <item>av_display_sel_button:SET</item>
+        <item>avdisplay_vol_up:VOL+</item>
+        <item>avdisplay_vol_down:VOL-</item>
+        <item>avdisplay_one_button:1</item>
+        <item>avdisplay_two_button:2</item>
+        <item>avdisplay_three_button:3</item>
+        <item>avdisplay_four_button:4</item>
+        <item>avdisplay_five_button:5</item>
+        <item>avdisplay_six_button:6</item>
+        <item>avdisplay_seven_button:7</item>
+        <item>avdisplay_eight_button:8</item>
+        <item>avdisplay_nine_button:9</item>
+        <item>avdisplay_zero_button:0</item>
     </string-array>
 </resources>
